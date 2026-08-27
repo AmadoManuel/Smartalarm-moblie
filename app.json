@@ -1,0 +1,74 @@
+{
+  "expo": {
+    "name": "SmartAlarm",
+    "slug": "smartalarm-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.smartalarm.mobile",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification", "background-processing"],
+        "NSCameraUsageDescription": "O SmartAlarm precisa de acesso à câmera para escanear QR codes nos desafios.",
+        "NSMicrophoneUsageDescription": "O SmartAlarm precisa de acesso ao microfone para comandos de voz."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a2e"
+      },
+      "package": "com.smartalarm.mobile",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "USE_FULL_SCREEN_INTENT",
+        "SCHEDULE_EXACT_ALARM"
+      ],
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#00d4aa",
+          "defaultChannel": "alarms",
+          "sounds": ["./assets/alarm-sound.wav"],
+          "mode": "production",
+          "enableBackgroundRemoteNotifications": true
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O SmartAlarm precisa de acesso à câmera para escanear QR codes nos desafios."
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "O SmartAlarm precisa de acesso aos sensores de movimento para o desafio de sacudir."
+        }
+      ]
+    ],
+    "scheme": "smartalarm",
+    "extra": {
+      "apiUrl": "http://localhost:8000/api",
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}
